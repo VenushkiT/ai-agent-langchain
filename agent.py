@@ -1,11 +1,15 @@
 import os
 from langchain.llms import OpenAI
+from dotenv import load_dotenv
 from langchain.agents import initialize_agent, Tool
 from langchain.agents import AgentType
 from langchain.tools import DuckDuckGoSearchRun
 
-os.environ["OPENAI_API_KEY"] = "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"
+# Load environment variables from .env file
+load_dotenv()
 
+# Get the API key from environment variables
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 llm = OpenAI(temperature=0)
 
 search = DuckDuckGoSearchRun()
